@@ -5,17 +5,17 @@ export default function ProfilePage(): JSX.Element {
     <div className="min-h-screen bg-white p-5">
       {/* Header */}
       <div className="w-full bg-white p-5 flex justify-between items-center border-b">
-        <h4 className="text-2xl font-bold">ข้อมูลส่วนตัว</h4>
+        <h4 className="text-xl md:text-2xl font-bold">ข้อมูลส่วนตัว</h4>
         {/* ปุ่ม Edit พร้อม Tooltip */}
-        <div className="relative group flex items-center gap-3">
+        <div className="relative group flex items-center gap-2 md:gap-3">
           {/* Tooltip */}
-          <span className="text-lg text-yellow-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+          <span className="text-sm md:text-lg text-yellow-500 font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
             แก้ไขข้อมูลส่วนตัว
           </span>
-          <button className="flex p-3 rounded-full transition-all duration-300">
+          <button className="flex p-2 md:p-3 rounded-full transition-all duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8 text-yellow-500"
+              className="h-6 w-6 md:h-8 md:w-8 text-yellow-500"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -35,49 +35,32 @@ export default function ProfilePage(): JSX.Element {
       <div className="container mx-auto p-5">
         {/* ข้อมูลพื้นฐาน */}
         <Section title="ข้อมูลพื้นฐาน">
-          <div className="flex flex-col items-center md:flex-row gap-8">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
             {/* รูปโปรไฟล์ */}
             <div className="flex-shrink-0 flex flex-col items-center">
               <img
-                className="w-48 h-48 rounded-full"
+                className="w-36 h-36 md:w-48 md:h-48 rounded-full"
                 src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                 alt="Profile"
               />
-              <p className="font-semibold mt-4 text-center">รูปโปรไฟล์</p>
+              <p className="font-semibold mt-2 md:mt-4 text-center">รูปโปรไฟล์</p>
             </div>
 
             {/* ข้อมูลพื้นฐาน */}
-            <div className="flex-grow flex flex-col gap-4">
+            <div className="flex-grow flex flex-col gap-4 w-full md:max-w-md">
               {/* ID Card */}
-              <div>
-                <label className="block font-medium text-gray-700">ID Card (รหัสบัตรประชาชน)</label>
-                <div className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-700 mt-1">
-                  รหัสบัตรประชาชน ( แก้ไขไม่ได้ )
-                </div>
-              </div>
-
+              <ProfileDisplay label="ID Card (รหัสบัตรประชาชน)" value="รหัสบัตรประชาชน ( แก้ไขไม่ได้ )" />
               {/* Email */}
-              <div>
-                <label className="block font-medium text-gray-700">Email (เมลสถาบัน)</label>
-                <div className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-700 mt-1">
-                  อีเมลสถาบัน ( แก้ไขไม่ได้ )
-                </div>
-              </div>
-
+              <ProfileDisplay label="Email (เมลสถาบัน)" value="อีเมลสถาบัน ( แก้ไขไม่ได้ )" />
               {/* Student ID */}
-              <div>
-                <label className="block font-medium text-gray-700">Student ID (รหัสนักศึกษา)</label>
-                <div className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-700 mt-1">
-                  รหัสนักศึกษา ( แก้ไขไม่ได้ )
-                </div>
-              </div>
+              <ProfileDisplay label="Student ID (รหัสนักศึกษา)" value="รหัสนักศึกษา ( แก้ไขไม่ได้ )" />
             </div>
           </div>
         </Section>
 
         {/* ข้อมูลนักศึกษา */}
         <Section title="ข้อมูลนักศึกษา">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <ProfileInput label="First Name (ชื่อ)" placeholder="ชื่อ" />
             <ProfileInput label="Last Name (นามสกุล)" placeholder="นามสกุล" />
             <ProfileInput label="Nickname (ชื่อเล่น)" placeholder="ชื่อเล่น" />
@@ -88,39 +71,32 @@ export default function ProfilePage(): JSX.Element {
         </Section>
 
         {/* ข้อมูลเพิ่มเติม */}
-          <Section title="ข้อมูลเพิ่มเติม">
-            <div className="flex flex-wrap gap-4">
-              {/* Birth Date */}
-              <div className="flex-1 min-w-[300px]">
-                <label className="block font-medium text-gray-700">Birth Date (วัน/เดือน/ปีเกิด)</label>
-                <input
-                  type="date"
-                  className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 mt-1"
-                />
-              </div>
-
-              {/* Blood Type */}
-              <div className="flex-1 min-w-[300px]">
-                <label className="block font-medium text-gray-700">Blood Type (กรุ๊ปเลือด)</label>
-                <select
-                  defaultValue=""
-                  className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 mt-1"
-                >
-                  <option value="" disabled>
-                    เลือกกรุ๊ปเลือด
-                  </option>
-                  <option value="A">กรุ๊ป A</option>
-                  <option value="B">กรุ๊ป B</option>
-                  <option value="AB">กรุ๊ป AB</option>
-                  <option value="O">กรุ๊ป O</option>
-                </select>
-              </div>
+        <Section title="ข้อมูลเพิ่มเติม">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Birth Date */}
+            <ProfileInput label="Birth Date (วัน/เดือน/ปีเกิด)" type="date" />
+            {/* Blood Type */}
+            <div>
+              <label className="block font-medium text-gray-700">Blood Type (กรุ๊ปเลือด)</label>
+              <select
+                defaultValue=""
+                className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 mt-1"
+              >
+                <option value="" disabled>
+                  เลือกกรุ๊ปเลือด
+                </option>
+                <option value="A">กรุ๊ป A</option>
+                <option value="B">กรุ๊ป B</option>
+                <option value="AB">กรุ๊ป AB</option>
+                <option value="O">กรุ๊ป O</option>
+              </select>
             </div>
-          </Section>
+          </div>
+        </Section>
 
         {/* ข้อมูลผู้ปกครอง */}
         <Section title="ข้อมูลผู้ปกครอง">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <ProfileInput label="Guardian First Name (ชื่อผู้ปกครอง)" placeholder="ชื่อผู้ปกครอง" />
             <ProfileInput label="Guardian Last Name (นามสกุลผู้ปกครอง)" placeholder="นามสกุลผู้ปกครอง" />
             <ProfileInput label="Guardian Phone (เบอร์โทรผู้ปกครอง)" placeholder="เบอร์โทรผู้ปกครอง" />
@@ -132,13 +108,7 @@ export default function ProfilePage(): JSX.Element {
 }
 
 // Component สำหรับ Section
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}): JSX.Element {
+function Section({ title, children }: { title: string; children: React.ReactNode }): JSX.Element {
   return (
     <div className="mb-6 border-b pb-6">
       <h5 className="text-lg font-semibold mb-4">{title}</h5>
@@ -148,15 +118,7 @@ function Section({
 }
 
 // Component สำหรับ Input Field
-function ProfileInput({
-  label,
-  type = "text",
-  placeholder,
-}: {
-  label: string;
-  type?: string;
-  placeholder?: string;
-}): JSX.Element {
+function ProfileInput({ label, type = "text", placeholder }: { label: string; type?: string; placeholder?: string }): JSX.Element {
   return (
     <div className="w-full">
       <label className="block font-medium text-gray-700">{label}</label>
@@ -165,6 +127,16 @@ function ProfileInput({
         placeholder={placeholder}
         className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 mt-1"
       />
+    </div>
+  );
+}
+
+// Component สำหรับแสดงข้อมูลแบบอ่านอย่างเดียว
+function ProfileDisplay({ label, value }: { label: string; value: string }): JSX.Element {
+  return (
+    <div>
+      <label className="block font-medium text-gray-700">{label}</label>
+      <div className="w-full px-3 py-2 border rounded-md bg-gray-100 text-gray-700 mt-1">{value}</div>
     </div>
   );
 }
